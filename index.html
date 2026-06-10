@@ -326,7 +326,7 @@ select.dash-input option{background:#0B1F38}
 #cv-wrap{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:78px 22px 80px}
 
 /* Hero */
-#hero{padding:52px 0 44px;text-align:center}
+#hero{padding:70px 0 58px;text-align:center;position:relative;overflow:hidden}
 .avatar-ring{
   width:100px;height:100px;border-radius:50%;margin:0 auto 18px;
   background:linear-gradient(135deg,var(--gold),var(--cyan));padding:3px;
@@ -338,7 +338,7 @@ select.dash-input option{background:#0B1F38}
   font-family:'Playfair Display',serif;font-size:clamp(2rem,6vw,3.4rem);font-weight:900;
   color:var(--white);line-height:1.05;margin-bottom:8px;
 }
-body.ar .hero-name{font-family:'Cairo',sans-serif}
+body.ar .hero-name{font-family:'Cairo',sans-serif;background:none;-webkit-text-fill-color:unset;color:var(--white)}
 .hero-sub{font-size:.87rem;color:var(--cyan);letter-spacing:.13em;text-transform:uppercase;margin-bottom:6px;font-weight:500}
 body.ar .hero-sub{letter-spacing:.03em}
 .hero-tagline-text{font-style:italic;color:rgba(184,207,232,.55);font-size:.85rem;margin-bottom:24px;min-height:22px}
@@ -357,8 +357,9 @@ body.ar .hero-sub{letter-spacing:.03em}
 
 /* Stats */
 .stats-bar{
-  display:grid;grid-template-columns:repeat(5,1fr);gap:2px;margin:42px 0;
+  display:grid;grid-template-columns:repeat(6,1fr);gap:2px;margin:42px 0;
   border-radius:var(--r);overflow:hidden;border:1px solid rgba(255,255,255,.04);
+  box-shadow:0 6px 32px rgba(0,0,0,.25);
 }
 @media(max-width:600px){.stats-bar{grid-template-columns:repeat(3,1fr)}}
 .stat{background:rgba(11,31,56,.7);padding:20px 12px;text-align:center;transition:background .3s;cursor:default}
@@ -566,6 +567,185 @@ body.ar .lang-table td:first-child{text-align:right}
 }
 .footer-admin-link:hover{color:rgba(41,160,224,.6)}
 
+/* Patent card */
+.patent-card{
+  background:linear-gradient(135deg,rgba(11,31,56,.9),rgba(100,60,180,.12));
+  border:1px solid rgba(167,139,250,.22);border-radius:var(--r);
+  padding:26px 28px;margin-bottom:13px;position:relative;overflow:hidden;
+  transition:transform .28s,border-color .28s,box-shadow .28s;
+}
+.patent-card:hover{transform:translateY(-3px);border-color:rgba(167,139,250,.45);box-shadow:0 14px 40px rgba(0,0,0,.32)}
+.patent-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,#A78BFA,var(--cyan));opacity:0;transition:opacity .3s}
+.patent-card:hover::before{opacity:1}
+.patent-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(167,139,250,.1);
+  border:1px solid rgba(167,139,250,.3);color:#C4B5FD;border-radius:50px;
+  padding:3px 11px;font-size:.7rem;font-weight:700;margin-bottom:11px;letter-spacing:.04em}
+.patent-title{font-family:'Playfair Display',serif;font-size:1.02rem;font-weight:700;
+  color:var(--white);line-height:1.5;margin-bottom:10px}
+body.ar .patent-title{font-family:'Cairo',sans-serif}
+.patent-inventors{font-size:.79rem;color:var(--muted);display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-top:4px}
+.patent-num{display:inline-flex;align-items:center;gap:4px;background:rgba(200,145,26,.08);
+  border:1px solid rgba(200,145,26,.2);color:var(--gold);border-radius:50px;
+  padding:2px 9px;font-size:.68rem;font-weight:700;font-family:'JetBrains Mono',monospace}
+
+/* Elegant refinements */
+.hero-name{background:linear-gradient(135deg,#ffffff 48%,var(--cyan) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.avatar-ring{animation:glow 4s ease-in-out infinite,float 6s ease-in-out infinite}
+.hero-tag{transition:all .22s;cursor:default}
+.hero-tag:hover{background:rgba(41,160,224,.18);border-color:rgba(41,160,224,.4);color:var(--white);transform:translateY(-1px)}
+.sec-icon{transition:transform .3s,box-shadow .3s}
+.cv-section:hover .sec-icon{transform:scale(1.1);box-shadow:0 8px 24px rgba(41,160,224,.3)}
+.stat{transition:background .3s}
+.stat-num{text-shadow:0 0 24px rgba(200,145,26,.25)}
+.pub-card,.patent-card{transition:transform .28s,border-color .28s,box-shadow .28s}
+.pub-card:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(0,0,0,.3)}
+
+/* ═══ COMPREHENSIVE RESTYLE ═══════════════════════════ */
+/* Hero ambiance */
+#hero::before{
+  content:'';position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(ellipse 72% 55% at 50% -8%,rgba(41,160,224,.13) 0%,transparent 68%),
+    radial-gradient(ellipse 38% 28% at 50% -12%,rgba(200,145,26,.08) 0%,transparent 60%);
+}
+#hero>*{position:relative;z-index:1}
+
+/* Avatar ring - conic gradient */
+.avatar-ring{
+  width:114px;height:114px;padding:3px;
+  background:conic-gradient(from 200deg,var(--gold) 0%,var(--cyan) 35%,var(--accent) 65%,var(--gold) 100%);
+  box-shadow:0 0 0 1px rgba(255,255,255,.05),0 28px 64px rgba(0,0,0,.6);
+}
+.avatar-inner{width:108px;height:108px;font-size:44px}
+
+/* Hero sub */
+.hero-sub{letter-spacing:.15em;font-size:.84rem}
+body.ar .hero-sub{letter-spacing:.04em}
+
+/* Hero tagline */
+.hero-tagline-text{font-size:.9rem;letter-spacing:.012em}
+
+/* Hero tags */
+.hero-tags{gap:8px}
+.hero-tag{font-size:.74rem;padding:5px 14px}
+
+/* Contact pills */
+.contact-pill{transition:all .22s cubic-bezier(.4,0,.2,1)}
+.contact-pill:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(41,160,224,.2)}
+
+/* Stats bar */
+.stat{padding:26px 10px;position:relative;border-right:1px solid rgba(255,255,255,.022)}
+.stats-bar .stat:last-child{border-right:none}
+.stat-num{font-size:2.1rem;font-weight:900;letter-spacing:-.04em;line-height:1;margin-bottom:5px}
+.stats-bar .stat:nth-child(1) .stat-num{color:var(--green);text-shadow:0 0 22px rgba(34,197,94,.35)}
+.stats-bar .stat:nth-child(2) .stat-num{color:var(--accent);text-shadow:0 0 22px rgba(41,160,224,.35)}
+.stats-bar .stat:nth-child(3) .stat-num{color:#C4B5FD;text-shadow:0 0 22px rgba(167,139,250,.35)}
+.stats-bar .stat:nth-child(4) .stat-num{color:var(--gold);text-shadow:0 0 22px rgba(200,145,26,.35)}
+.stats-bar .stat:nth-child(5) .stat-num{color:var(--cyan);text-shadow:0 0 22px rgba(0,201,212,.35)}
+.stats-bar .stat:nth-child(6) .stat-num{color:var(--orange);text-shadow:0 0 22px rgba(245,158,11,.35)}
+.stat:hover{background:rgba(255,255,255,.022)}
+.stat-label{font-size:.62rem;color:rgba(92,122,150,.72);letter-spacing:.09em}
+
+/* CV cards - premium glass */
+.cv-card{
+  background:linear-gradient(158deg,rgba(15,35,64,.84),rgba(9,22,44,.92));
+  border:1px solid rgba(255,255,255,.06);
+  box-shadow:0 4px 24px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.05);
+  border-radius:14px;
+}
+.cv-card:hover{
+  border-color:rgba(41,160,224,.18);
+  box-shadow:0 20px 52px rgba(0,0,0,.4),0 0 0 1px rgba(41,160,224,.1),inset 0 1px 0 rgba(255,255,255,.07);
+}
+.cv-title{font-size:1.02rem;font-weight:700;letter-spacing:-.01em}
+.cv-desc{font-size:.83rem;line-height:1.75}
+
+/* Section header */
+.sec-header{margin-bottom:28px}
+.sec-icon{
+  width:42px;height:42px;border-radius:13px;
+  background:linear-gradient(142deg,rgba(26,92,150,.98),rgba(41,160,224,.84));
+  box-shadow:0 5px 20px rgba(41,160,224,.24),inset 0 1px 0 rgba(255,255,255,.22);
+  font-size:1.05rem;
+}
+.sec-title{font-size:1.3rem;letter-spacing:-.015em;font-weight:700}
+.sec-line{background:linear-gradient(to right,rgba(41,160,224,.32),rgba(41,160,224,.08),transparent);height:1px}
+body.ar .sec-line{background:linear-gradient(to left,rgba(41,160,224,.32),rgba(41,160,224,.08),transparent)}
+
+/* Publication card */
+.pub-card{
+  background:linear-gradient(158deg,rgba(15,35,64,.96),rgba(22,58,98,.42));
+  box-shadow:0 5px 24px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.05);
+  border-radius:14px;
+}
+.pub-title{font-size:1.08rem;letter-spacing:-.01em}
+
+/* Research filter - tab style */
+.research-filters{gap:8px;margin-bottom:20px}
+.r-filter{border-radius:9px;font-size:.71rem;letter-spacing:.035em;padding:6px 15px}
+
+/* Paper cards */
+.paper-card{
+  background:linear-gradient(158deg,rgba(15,35,64,.82),rgba(9,22,44,.9));
+  border:1px solid rgba(255,255,255,.055);
+  box-shadow:0 2px 14px rgba(0,0,0,.15);
+  padding:20px 24px;
+  border-radius:13px;
+}
+.paper-card:hover{
+  background:linear-gradient(158deg,rgba(18,44,78,.86),rgba(12,28,54,.93));
+  box-shadow:0 12px 32px rgba(0,0,0,.28),0 0 0 1px rgba(41,160,224,.09);
+}
+.paper-title{font-size:.9rem;line-height:1.48;letter-spacing:-.005em}
+
+/* Award cards */
+.awards-grid{gap:14px}
+.award-card{
+  background:linear-gradient(158deg,rgba(15,35,64,.82),rgba(9,22,44,.9));
+  box-shadow:0 4px 20px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.05);
+  border-radius:14px;padding:20px 22px;
+}
+.award-card:hover{box-shadow:0 16px 40px rgba(0,0,0,.32),0 0 0 1px rgba(200,145,26,.14)}
+.award-medal{font-size:1.65rem;margin-bottom:8px}
+.award-title{font-size:.9rem;letter-spacing:-.005em}
+
+/* Cert cards */
+.cert-grid{gap:14px}
+.cert-card{
+  background:linear-gradient(158deg,rgba(15,35,64,.82),rgba(9,22,44,.9));
+  box-shadow:0 2px 14px rgba(0,0,0,.13),inset 0 1px 0 rgba(255,255,255,.05);
+  border-radius:13px;
+}
+.cert-card:hover{box-shadow:0 10px 28px rgba(0,0,0,.24)}
+
+/* Skill groups */
+.skills-grid{gap:15px}
+.skill-group{
+  background:linear-gradient(158deg,rgba(15,35,64,.82),rgba(9,22,44,.9));
+  box-shadow:0 2px 14px rgba(0,0,0,.13);
+  border-radius:13px;
+}
+.skill-group:hover{box-shadow:0 10px 28px rgba(0,0,0,.22)}
+.skill-tag{border-radius:7px;font-size:.73rem}
+.skill-tag:hover{transform:translateY(-1px);box-shadow:0 4px 10px rgba(41,160,224,.2)}
+
+/* Tagline callout */
+.tagline-callout{border-radius:11px;padding:10px 16px}
+
+/* Lang table */
+.lang-table{border-spacing:4px}
+.lang-table th{border-radius:7px;letter-spacing:.06em}
+.lang-table td{border-radius:7px}
+
+/* Pillar cards */
+.pillar{border-radius:9px;padding:13px 14px}
+
+/* Footer */
+#cv-footer{padding:36px 0}
+
 @media(max-width:640px){
   .cv-top{flex-direction:column}
   body.ar .cv-top{flex-direction:column}
@@ -614,6 +794,7 @@ body.ar .lang-table td:first-child{text-align:right}
         <div class="nav-group-label">Content</div>
         <div class="nav-item active" onclick="showPage('profile')" data-page="profile"><span class="ni">👤</span>Profile & Taglines</div>
         <div class="nav-item" onclick="showPage('papers')" data-page="papers"><span class="ni">🔬</span>Research Papers<span class="badge" id="badge-papers">0</span></div>
+        <div class="nav-item" onclick="showPage('patents')" data-page="patents"><span class="ni">⚗️</span>Patents<span class="badge" id="badge-patents">0</span></div>
         <div class="nav-item" onclick="showPage('projects')" data-page="projects"><span class="ni">🚀</span>Projects & Ventures</div>
         <div class="nav-item" onclick="showPage('awards')" data-page="awards"><span class="ni">🏆</span>Awards</div>
         <div class="nav-item" onclick="showPage('volunteering')" data-page="volunteering"><span class="ni">🤝</span>Volunteering</div>
@@ -670,6 +851,17 @@ body.ar .lang-table td:first-child{text-align:right}
           <button class="add-btn" onclick="openPaperModal()">+ Add Paper</button>
         </div>
         <div id="papers-list"></div>
+      </div>
+
+      <!-- Patents page -->
+      <div class="dash-page" id="page-patents">
+        <div class="dash-title">Patents</div>
+        <div class="dash-sub">Manage registered patents and intellectual property</div>
+        <div class="section-toolbar">
+          <h2>All Patents</h2>
+          <button class="add-btn" onclick="openPatentModal()">+ Add Patent</button>
+        </div>
+        <div id="patents-list"></div>
       </div>
 
       <!-- Projects page -->
@@ -775,6 +967,7 @@ body.ar .lang-table td:first-child{text-align:right}
       <span class="nav-pill" onclick="cvScroll('projects')" data-target="projects" data-en="Ventures" data-ar="المشاريع">Ventures</span>
       <span class="nav-pill" onclick="cvScroll('awards')" data-target="awards" data-en="Awards" data-ar="الجوائز">Awards</span>
       <span class="nav-pill" onclick="cvScroll('cv-skills')" data-target="cv-skills" data-en="Skills" data-ar="المهارات">Skills</span>
+      <span class="nav-pill" onclick="cvScroll('patents')" data-target="patents" data-en="Patents" data-ar="البراءات">Patents</span>
     </div>
     <div id="topbar-right">
       <button id="admin-btn" onclick="switchToDash()" style="display:none">⚙ Admin</button>
@@ -805,82 +998,586 @@ body.ar .lang-table td:first-child{text-align:right}
 // DEFAULT DATA
 // ═══════════════════════════════════════════════════════
 const DEFAULT_DATA = {
-  auth:{ user:'anas', pass:'AlphaX2025!' },
-  profile:{
-    name_en:'Anas Shahin', name_ar:'أنس شاهين',
-    sub_en:'AI Researcher · IT Engineer · Entrepreneur',
-    sub_ar:'باحث في الذكاء الاصطناعي · مهندس تقنية معلومات · رائد أعمال',
-    email:'ons.hassan.shahin@gmail.com', phone:'(+963) 992380816',
-    loc_en:'Al Muhajreen, Damascus, Syria', loc_ar:'المهاجرين، دمشق، سوريا',
-    linkedin:'https://www.linkedin.com/in/ons-shahin',
-    instagram:'https://www.instagram.com/ons_shahin',
-    dob:'17/03/2005',
+  "auth": {
+    "user": "anas",
+    "pass": "AlphaX2025!"
   },
-  taglines:[
-    {en:'From knowledge consumers to knowledge creators.',ar:'من مستهلكي المعرفة إلى صانعيها.'},
-    {en:'Bridging AI innovation and clinical impact.',ar:'ردم الهوة بين ابتكار الذكاء الاصطناعي والأثر السريري.'},
-    {en:'Making science accessible in Arabic.',ar:'جعل العلوم في متناول الجميع بالعربية.'},
+  "profile": {
+    "name_en": "Anas Shahin",
+    "name_ar": "أنس شاهين",
+    "sub_en": "AI Researcher ·  AlphaX Co-Founder",
+    "sub_ar": "باحث في الذكاء الاصطناعي · مؤسس AlphaX",
+    "email": "ons.hassan.shahin@gmail.com",
+    "phone": "(+963) 992380816",
+    "loc_en": "Al Muhajreen, Damascus, Syria",
+    "loc_ar": "المهاجرين، دمشق، سوريا",
+    "linkedin": "https://www.linkedin.com/in/ons-shahin-a7b85a229?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    "instagram": "https://www.instagram.com/ons_shahin",
+    "dob": "17/03/2005"
+  },
+  "taglines": [
+    {
+      "en": "From knowledge consumers to knowledge creators.",
+      "ar": "من مستهلكي المعرفة إلى صانعيها."
+    },
+    {
+      "en": "Bridging AI innovation and clinical impact.",
+      "ar": "ردم الهوة بين ابتكار الذكاء الاصطناعي والأثر السريري."
+    },
+    {
+      "en": "Making science accessible in Arabic.",
+      "ar": "جعل العلوم في متناول الجميع بالعربية."
+    }
   ],
-  papers:[
-    {id:'p1',title_en:'Fine-tuned ResNet34 for Efficient Brain Tumor Classification',title_ar:'شبكة ResNet34 المُدرَّبة لتصنيف أورام الدماغ بكفاءة',status:'published',journal:'Scientific Reports',publisher:'Springer Nature',doi:'https://doi.org/10.1038/s41598-025-20872-3',domain:'med',year:'2025',desc_en:'Developed and validated a CNN-based model for brain tumor detection with high accuracy under resource-limited settings. Led all stages: data preprocessing, model optimization, and manuscript writing.',desc_ar:'طوّر ووثّق نموذج CNN عالي الدقة لاكتشاف أورام الدماغ. قاد جميع مراحل البحث: المعالجة المسبقة، تحسين النموذج، وكتابة المخطوطة.'},
-    {id:'p2',title_en:'A Conceptual Framework for Federated Learning Across Distributed Lunar Surface Assets',title_ar:'إطار مفاهيمي للتعلم الموزع عبر الأصول المنتشرة على السطح القمري',status:'review',journal:'',publisher:'',doi:'',domain:'space',year:'2025',desc_en:'',desc_ar:''},
-    {id:'p3',title_en:'AI-Driven Autonomous Dust Mitigation & Cleaning System for Extraterrestrial Solar Panels',title_ar:'نظام مستقل مدعوم بالذكاء الاصطناعي لتخفيف الغبار وتنظيف الألواح الشمسية خارج الأرض',status:'review',journal:'',publisher:'',doi:'',domain:'space',year:'2025',desc_en:'',desc_ar:''},
-    {id:'p4',title_en:'SpaceMind OS: A Layered LLM Operating System for Autonomous Deep Space Mission Management',title_ar:'SpaceMind OS: نظام تشغيل LLM متعدد الطبقات لإدارة مهمات الفضاء العميق',status:'review',journal:'',publisher:'',doi:'',domain:'space',year:'2025',desc_en:'',desc_ar:''},
-    {id:'p5',title_en:'ARIA: Autonomous Reasoning & Intervention Architecture for Bioregenerative Life Support on Mars Missions',title_ar:'ARIA: بنية استدلال وتدخل مستقلة لأنظمة دعم الحياة في مهمات المريخ',status:'review',journal:'',publisher:'',doi:'',domain:'space',year:'2025',desc_en:'',desc_ar:''},
-    {id:'p6',title_en:'A Multi-Level Data Condensation & Discriminative Feature Extraction Framework for High-Accuracy Medical Classification',title_ar:'إطار متعدد المستويات لتكثيف البيانات والتصنيف الطبي عالي الدقة',status:'review',journal:'',publisher:'',doi:'',domain:'med',year:'2025',desc_en:'',desc_ar:''},
-    {id:'p7',title_en:'Global Disparities in Breast Cancer Screening Access: A Comparative Analysis Across Income Settings',title_ar:'التفاوتات العالمية في الوصول إلى فحص سرطان الثدي',status:'review',journal:'',publisher:'',doi:'',domain:'med',year:'2025',desc_en:'',desc_ar:''},
-    {id:'p8',title_en:'MDEF-AI: A Multi-Level Dynamic Evaluation Framework for AI-Based Clinical Decision Support',title_ar:'MDEF-AI: إطار تقييم ديناميكي متعدد المستويات للذكاء الاصطناعي السريري',status:'review',journal:'',publisher:'',doi:'',domain:'med',year:'2025',desc_en:'',desc_ar:''},
-    {id:'p9',title_en:'Artificial Intelligence in Breast Cancer Detection: A Critical Review of Advanced Imaging Integration',title_ar:'الذكاء الاصطناعي في اكتشاف سرطان الثدي: مراجعة نقدية',status:'review',journal:'',publisher:'',doi:'',domain:'med',year:'2025',desc_en:'',desc_ar:''},
-    {id:'p10',title_en:'Beyond Behavioral Assessment: A Critical Review of Emerging Diagnostic Technologies for ADHD',title_ar:'ما وراء التقييم السلوكي: مراجعة نقدية لتقنيات تشخيص ADHD',status:'review',journal:'',publisher:'',doi:'',domain:'med',year:'2025',desc_en:'',desc_ar:''},
-    {id:'p11',title_en:'Multi-Agent AI Framework for Alzheimer\'s Disease Trajectory Prediction via Sleep-Derived Biomarkers',title_ar:'إطار ذكاء اصطناعي متعدد الوكلاء للتنبؤ بمسار مرض الزهايمر',status:'review',journal:'',publisher:'',doi:'',domain:'med',year:'2025',desc_en:'',desc_ar:''},
-    {id:'p12',title_en:'CEDF-CS: A Record-Level Data Condensation Framework for Resource-Efficient Intrusion Detection in Industrial IoT',title_ar:'CEDF-CS: إطار تكثيف بيانات لكشف التسلل في إنترنت الأشياء الصناعي',status:'review',journal:'',publisher:'',doi:'',domain:'sec',year:'2025',desc_en:'',desc_ar:''},
-    {id:'p13',title_en:'AI-Generated Political Satire as a Proxy for Societal Freedom of Expression: The Discursive Reflection Hypothesis',title_ar:'السخرية السياسية المولَّدة بالذكاء الاصطناعي كمعيار لحرية التعبير: فرضية الانعكاس الخطابي',status:'review',journal:'',publisher:'',doi:'',domain:'soc',year:'2025',desc_en:'',desc_ar:''},
-    {id:'p14',title_en:'A Multi-Agent AI Framework for Mental Health Triage & Support in Post-Conflict Arabic-Speaking Populations',title_ar:'إطار ذكاء اصطناعي متعدد الوكلاء لدعم الصحة النفسية في المجتمعات العربية بعد النزاعات',status:'review',journal:'',publisher:'',doi:'',domain:'soc',year:'2025',desc_en:'',desc_ar:''},
+  "papers": [
+    {
+      "id": "p1",
+      "title_en": "Fine-tuned ResNet34 for Efficient Brain Tumor Classification",
+      "title_ar": "شبكة ResNet34 المُدرَّبة لتصنيف أورام الدماغ بكفاءة",
+      "status": "published",
+      "journal": "Scientific Reports",
+      "publisher": "Springer Nature",
+      "doi": "https://doi.org/10.1038/s41598-025-20872-3",
+      "domain": "med",
+      "year": "2025",
+      "desc_en": "Developed and validated a CNN-based model for brain tumor detection with high accuracy under resource-limited settings. Led all stages: data preprocessing, model optimization, and manuscript writing.",
+      "desc_ar": "طوّر ووثّق نموذج CNN عالي الدقة لاكتشاف أورام الدماغ. قاد جميع مراحل البحث: المعالجة المسبقة، تحسين النموذج، وكتابة المخطوطة."
+    },
+    {
+      "id": "p2",
+      "title_en": "A Conceptual Framework for Federated Learning Across Distributed Lunar Surface Assets",
+      "title_ar": "إطار مفاهيمي للتعلم الموزع عبر الأصول المنتشرة على السطح القمري",
+      "status": "review",
+      "year": "2026",
+      "journal": "",
+      "publisher": "",
+      "doi": "",
+      "domain": "space",
+      "desc_en": "",
+      "desc_ar": ""
+    },
+    {
+      "id": "p3",
+      "title_en": "AI-Driven Autonomous Dust Mitigation & Cleaning System for Extraterrestrial Solar Panels",
+      "title_ar": "نظام مستقل مدعوم بالذكاء الاصطناعي لتخفيف الغبار وتنظيف الألواح الشمسية خارج الأرض",
+      "status": "review",
+      "year": "2026",
+      "journal": "",
+      "publisher": "",
+      "doi": "",
+      "domain": "space",
+      "desc_en": "",
+      "desc_ar": ""
+    },
+    {
+      "id": "p4",
+      "title_en": "SpaceMind OS: A Layered LLM Operating System for Autonomous Deep Space Mission Management",
+      "title_ar": "SpaceMind OS: نظام تشغيل LLM متعدد الطبقات لإدارة مهمات الفضاء العميق",
+      "status": "review",
+      "journal": "",
+      "publisher": "",
+      "doi": "",
+      "domain": "space",
+      "year": "2025",
+      "desc_en": "",
+      "desc_ar": ""
+    },
+    {
+      "id": "p5",
+      "title_en": "ARIA: Autonomous Reasoning & Intervention Architecture for Bioregenerative Life Support on Mars Missions",
+      "title_ar": "ARIA: بنية استدلال وتدخل مستقلة لأنظمة دعم الحياة في مهمات المريخ",
+      "status": "review",
+      "journal": "",
+      "publisher": "",
+      "doi": "",
+      "domain": "space",
+      "year": "2025",
+      "desc_en": "",
+      "desc_ar": ""
+    },
+    {
+      "id": "p6",
+      "title_en": "FedXBCa: A Heterogeneity-Robust Federated Learning Framework with Integrated Visual Explainability for Privacy-Preserving Distributed Medical Image Classification",
+      "title_ar": "FedXBCa: إطار تعلم اتحادي قوي تجاه التغاير مع قابلية تفسير بصرية متكاملة لتصنيف الصور الطبية الموزع الحافظ للخصوصية",
+      "status": "review",
+      "year": "2026",
+      "journal": "",
+      "publisher": "",
+      "doi": "",
+      "domain": "med",
+      "desc_en": "",
+      "desc_ar": ""
+    },
+    {
+      "id": "p7",
+      "title_en": "Global Disparities in Breast Cancer Screening Access: A Comparative Analysis Across Income Settings",
+      "title_ar": "التفاوتات العالمية في الوصول إلى فحص سرطان الثدي",
+      "status": "review",
+      "journal": "",
+      "publisher": "",
+      "doi": "",
+      "domain": "med",
+      "year": "2025",
+      "desc_en": "",
+      "desc_ar": ""
+    },
+    {
+      "id": "p8",
+      "title_en": "MDEF-AI: A Multi-Level Dynamic Evaluation Framework for AI-Based Clinical Decision Support",
+      "title_ar": "MDEF-AI: إطار تقييم ديناميكي متعدد المستويات للذكاء الاصطناعي السريري",
+      "status": "review",
+      "journal": "",
+      "publisher": "",
+      "doi": "",
+      "domain": "med",
+      "year": "2025",
+      "desc_en": "",
+      "desc_ar": ""
+    },
+    {
+      "id": "p9",
+      "title_en": "Artificial Intelligence in Breast Cancer Detection: A Critical Review of Advanced Imaging Integration",
+      "title_ar": "الذكاء الاصطناعي في اكتشاف سرطان الثدي: مراجعة نقدية",
+      "status": "review",
+      "journal": "",
+      "publisher": "",
+      "doi": "",
+      "domain": "med",
+      "year": "2025",
+      "desc_en": "",
+      "desc_ar": ""
+    },
+    {
+      "id": "p10",
+      "title_en": "Beyond Behavioral Assessment: A Critical Review of Emerging Diagnostic Technologies for ADHD",
+      "title_ar": "ما وراء التقييم السلوكي: مراجعة نقدية لتقنيات تشخيص ADHD",
+      "status": "review",
+      "journal": "",
+      "publisher": "",
+      "doi": "",
+      "domain": "med",
+      "year": "2025",
+      "desc_en": "",
+      "desc_ar": ""
+    },
+    {
+      "id": "p11",
+      "title_en": "A Multi-Agent AI Framework for Mental Health Triage in Post-Conflict Arabic-Speaking Populations",
+      "title_ar": "إطار ذكاء اصطناعي متعدد الوكلاء للتنبؤ بمسار مرض الزهايمر",
+      "status": "review",
+      "year": "2026",
+      "journal": "",
+      "publisher": "",
+      "doi": "",
+      "domain": "med",
+      "desc_en": "",
+      "desc_ar": ""
+    },
+    {
+      "id": "p12",
+      "title_en": "CEDF-CS: Class-Balanced Prototype Condensationfor Resource-Efficient and Leak-Free IntrusionDetection in Industrial IoT and Enterprise Networks",
+      "title_ar": "CEDF-CS: تكثيف النماذج الأولية المتوازن صنفياً للكشف عن التطفل بكفاءة في الموارد وخلو من التسرب في شبكات إنترنت الأشياء الصناعية وشبكات المؤسسات",
+      "status": "review",
+      "year": "2026",
+      "journal": "",
+      "publisher": "",
+      "doi": "",
+      "domain": "sec",
+      "desc_en": "",
+      "desc_ar": ""
+    },
+    {
+      "id": "p13",
+      "title_en": "Decoding Freedom Through AI Humor: How AI-Generated Political Satire Refracts Global Discourse Rather Than Reflecting Domestic Freedom",
+      "title_ar": "السخرية السياسية المولَّدة بالذكاء الاصطناعي كمعيار لحرية التعبير: فرضية الانعكاس الخطابي",
+      "status": "review",
+      "year": "2026",
+      "journal": "",
+      "publisher": "",
+      "doi": "",
+      "domain": "soc",
+      "desc_en": "",
+      "desc_ar": ""
+    },
+    {
+      "id": "p14",
+      "title_en": "A Multi-Agent AI Framework for Mental Health Triage & Support in Post-Conflict Arabic-Speaking Populations",
+      "title_ar": "إطار ذكاء اصطناعي متعدد الوكلاء لدعم الصحة النفسية في المجتمعات العربية بعد النزاعات",
+      "status": "review",
+      "journal": "",
+      "publisher": "",
+      "doi": "",
+      "domain": "soc",
+      "year": "2025",
+      "desc_en": "",
+      "desc_ar": ""
+    },
+    {
+      "id": "id_1781117929182_hes3",
+      "title_en": "Artificial Intelligence Applications in Academic Administration: A Multi-Level Decision Support Framework for Higher Education",
+      "title_ar": "تطبيقات الذكاء الاصطناعي في الإدارة الأكاديمية: إطار دعم قرار متعدد المستويات للتعليم العالي",
+      "status": "review",
+      "year": "2026",
+      "journal": "",
+      "publisher": "",
+      "doi": "",
+      "domain": "ai",
+      "desc_en": "",
+      "desc_ar": ""
+    },
+    {
+      "id": "id_1781119910051_npfx",
+      "title_en": "A Multi-Agent AI Framework for Predicting Alzheimer's Disease Trajectory Through Sleep-Dependent Memory Consolidation Biomarkers: A Conceptual Architecture",
+      "title_ar": "إطار ذكاء اصطناعي متعدد الوكلاء للتنبؤ بمسار مرض الزهايمر عبر المؤشرات الحيوية لتوطيد الذاكرة المعتمد على النوم: بنية مفاهيمية",
+      "status": "review",
+      "year": "2026",
+      "journal": "",
+      "publisher": "",
+      "doi": "",
+      "domain": "med",
+      "desc_en": "",
+      "desc_ar": ""
+    }
   ],
-  projects:[
-    {id:'pr1',name_en:'NeuroVision — Founder',name_ar:'NeuroVision — مؤسس',org_en:'AI Research Team · Healthcare AI',org_ar:'فريق بحثي في الذكاء الاصطناعي الصحي',date_en:'Feb 2025 – Present',date_ar:'فبراير 2025 – حتى الآن',tagline_en:'',tagline_ar:'',
-      bullets_en:['Multidisciplinary team advancing AI research in the healthcare sector, starting with MRI-based brain tumor detection.','Expanding toward scalable models for multiple tumors, illnesses, and clinical diagnostic tools.','Bridges AI innovation and clinical impact — creating equitable, data-driven tools supporting physicians.'],
-      bullets_ar:['فريق متعدد التخصصات يعمل على تطوير أبحاث الذكاء الاصطناعي في القطاع الصحي، بدءاً من الكشف عن أورام الدماغ عبر MRI.','التوسع نحو نماذج قابلة للتوسع لأورام وأمراض متعددة وأدوات تشخيص سريرية.','يربط بين ابتكار الذكاء الاصطناعي والأثر السريري — بناء أدوات تشخيصية تدعم الأطباء وتعزز العدالة الصحية.'],
-      metrics:[],pillars:[],blocks:[]},
-    {id:'pr2',name_en:'AlphaX Research Collective — Co-Founder & Co-Captain',name_ar:'AlphaX Research Collective — مؤسس مشارك وقائد مشارك',org_en:'Multidisciplinary Syrian Research Collective',org_ar:'مجموعة البحث السورية متعددة التخصصات',date_en:'May 2025 – Present',date_ar:'مايو 2025 – حتى الآن',
-      tagline_en:'From knowledge consumers to knowledge creators.',tagline_ar:'من مستهلكي المعرفة إلى صانعيها.',
-      bullets_en:['Architected full organizational infrastructure: onboarding systems, Navigator handbook, block-specific operational guides, and branded visual identity.','Designed the Knowledge Bridge pipeline — a 6-stage Arabic research translation workflow with dual-review, rolling roles, and cross-block collaboration.','Implemented a Notion-based contribution tracking system with rollup formulas, time-based filtering, and a 4-tier task classification framework.'],
-      bullets_ar:['صمّم البنية التنظيمية الكاملة: أنظمة التأهيل، دليل قادة الوحدات، أدلة تشغيل خاصة بكل وحدة، وهوية بصرية مميزة.','صمّم خط أنابيب Knowledge Bridge — مسار ترجمة بحثية عربي من 6 مراحل بنظام مراجعة مزدوج وأدوار متداولة.','بنى نظام تتبع مساهمات على Notion بصيغ Rollup وتصفية زمنية وإطار تصنيف رباعي للمهام.'],
-      metrics:[],
-      pillars:[{icon:'🌍',name_en:'Translation & Access',name_ar:'الترجمة والوصول',desc_en:'Making global science accessible in Arabic',desc_ar:'جعل العلوم العالمية متاحة بالعربية'},{icon:'⚗️',name_en:'Research & Innovation',name_ar:'البحث والابتكار',desc_en:'Producing original cross-disciplinary research',desc_ar:'إنتاج أبحاث أصيلة متعددة التخصصات'},{icon:'📚',name_en:'Training & Capacity',name_ar:'التدريب وبناء القدرات',desc_en:'Empowering Syrian youth in research skills',desc_ar:'تمكين الشباب السوري في مهارات البحث'}],
-      blocks:['🎨 Creative Lab','🌉 Knowledge Bridge','⚕️ Asclepius Lab','🧬 Neuroscience Research','⚙️ Operations & Strategy','📡 Science Comm & Outreach']},
-    {id:'pr3',name_en:'EDGLISH — Founder & Lead Educator',name_ar:'EDGLISH — مؤسس ومعلم رئيسي',org_en:'Free English Learning Platform for Arab Students',org_ar:'منصة تعليم الإنجليزية المجانية للطلاب العرب',date_en:'2023 – Present',date_ar:'2023 – حتى الآن',tagline_en:'',tagline_ar:'',
-      bullets_en:['Founded at age 17 to break a systemic barrier: ambitious Arabic-speaking students locked out of international scholarships due to English proficiency gaps.','Scaled the free platform to 30,000+ visitors with a team of four, delivering structured resources targeting academic English, research communication, and scientific writing.','Personally reviews all lesson content for clarity. Currently redesigning with AI-powered personalized tutoring features.','Maintains consistent output under severe infrastructure constraints through resourceful problem-solving and team coordination.'],
-      bullets_ar:['أسّسها في سن 17 لكسر حاجز منهجي: استبعاد الطلاب العرب الطموحين من المنح الدولية بسبب ضعف الإنجليزية.','وسّع المنصة المجانية لتصل إلى 30,000+ زائر بفريق من أربعة، تقديم موارد منظمة في الإنجليزية الأكاديمية والكتابة العلمية.','يراجع شخصياً كل محتوى الدروس — يعيد حالياً تصميم المنصة بميزات تدريس شخصية مدعومة بالذكاء الاصطناعي.','يحافظ على الاستمرارية رغم قيود البنية التحتية الشديدة من خلال حل مبدع للمشكلات وتنسيق الفريق.'],
-      metrics:[{num:'30K+',label_en:'Platform Visitors',label_ar:'زوار المنصة',color:'#22C55E'},{num:'4',label_en:'Team Members',label_ar:'أعضاء الفريق',color:'#29A0E0'},{num:'Free',label_en:'Always',label_ar:'دائماً',color:'#C8911A'}],
-      pillars:[],blocks:[]},
+  "projects": [
+    {
+      "id": "pr1",
+      "name_en": "NeuroVision — Founder",
+      "name_ar": "NeuroVision — مؤسس",
+      "org_en": "AI Research Team · Healthcare AI",
+      "org_ar": "فريق بحثي في الذكاء الاصطناعي الصحي",
+      "date_en": "Feb 2025 – Present",
+      "date_ar": "فبراير 2025 – حتى الآن",
+      "tagline_en": "",
+      "tagline_ar": "",
+      "bullets_en": [
+        "Multidisciplinary team advancing AI research in the healthcare sector, starting with MRI-based brain tumor detection.",
+        "Expanding toward scalable models for multiple tumors, illnesses, and clinical diagnostic tools.",
+        "Bridges AI innovation and clinical impact — creating equitable, data-driven tools supporting physicians."
+      ],
+      "bullets_ar": [
+        "فريق متعدد التخصصات يعمل على تطوير أبحاث الذكاء الاصطناعي في القطاع الصحي، بدءاً من الكشف عن أورام الدماغ عبر MRI.",
+        "التوسع نحو نماذج قابلة للتوسع لأورام وأمراض متعددة وأدوات تشخيص سريرية.",
+        "يربط بين ابتكار الذكاء الاصطناعي والأثر السريري — بناء أدوات تشخيصية تدعم الأطباء وتعزز العدالة الصحية."
+      ],
+      "metrics": [],
+      "pillars": [],
+      "blocks": []
+    },
+    {
+      "id": "pr2",
+      "name_en": "AlphaX Research Collective — Co-Founder & Co-Captain",
+      "name_ar": "AlphaX Research Collective — مؤسس مشارك وقائد مشارك",
+      "org_en": "Multidisciplinary Syrian Research Collective",
+      "org_ar": "مجموعة البحث السورية متعددة التخصصات",
+      "date_en": "May 2025 – Present",
+      "date_ar": "مايو 2025 – حتى الآن",
+      "tagline_en": "From knowledge consumers to knowledge creators.",
+      "tagline_ar": "من مستهلكي المعرفة إلى صانعيها.",
+      
+      "metrics": [],
+      "pillars": [
+        {
+          "icon": "🌍",
+          "name_en": "Translation & Access",
+          "name_ar": "الترجمة والوصول",
+          "desc_en": "Making global science accessible in Arabic",
+          "desc_ar": "جعل العلوم العالمية متاحة بالعربية"
+        },
+        {
+          "icon": "⚗️",
+          "name_en": "Research & Innovation",
+          "name_ar": "البحث والابتكار",
+          "desc_en": "Producing original cross-disciplinary research",
+          "desc_ar": "إنتاج أبحاث أصيلة متعددة التخصصات"
+        },
+        {
+          "icon": "📚",
+          "name_en": "Training & Capacity",
+          "name_ar": "التدريب وبناء القدرات",
+          "desc_en": "Empowering Syrian youth in research skills",
+          "desc_ar": "تمكين الشباب السوري في مهارات البحث"
+        }
+      ],
+      "blocks": [
+        "🎨 Creative Lab",
+        "🌉 Knowledge Bridge",
+        "⚕️ Asclepius Lab",
+        "🧬 Neuroscience Research",
+        "⚙️ Operations & Strategy",
+        "📡 Science Comm & Outreach"
+      ]
+    },
+    {
+      "id": "pr3",
+      "name_en": "EDGLISH — Founder & Lead Educator",
+      "name_ar": "EDGLISH — مؤسس ومعلم رئيسي",
+      "org_en": "Free English Learning Platform for Arab Students",
+      "org_ar": "منصة تعليم الإنجليزية المجانية للطلاب العرب",
+      "date_en": "2023 – Present",
+      "date_ar": "2023 – حتى الآن",
+      "tagline_en": "",
+      "tagline_ar": "",
+      "bullets_en": [
+        "Founded at age 17 to break a systemic barrier: ambitious Arabic-speaking students locked out of international scholarships due to English proficiency gaps.",
+        "Scaled the free platform to 30,000+ visitors with a team of four, delivering structured resources targeting academic English, research communication, and scientific writing.",
+        "Personally reviews all lesson content for clarity. Currently redesigning with AI-powered personalized tutoring features.",
+        "Maintains consistent output under severe infrastructure constraints through resourceful problem-solving and team coordination."
+      ],
+      "bullets_ar": [
+        "أسّسها في سن 17 لكسر حاجز منهجي: استبعاد الطلاب العرب الطموحين من المنح الدولية بسبب ضعف الإنجليزية.",
+        "وسّع المنصة المجانية لتصل إلى 30,000+ زائر بفريق من أربعة، تقديم موارد منظمة في الإنجليزية الأكاديمية والكتابة العلمية.",
+        "يراجع شخصياً كل محتوى الدروس — يعيد حالياً تصميم المنصة بميزات تدريس شخصية مدعومة بالذكاء الاصطناعي.",
+        "يحافظ على الاستمرارية رغم قيود البنية التحتية الشديدة من خلال حل مبدع للمشكلات وتنسيق الفريق."
+      ],
+      "metrics": [
+        {
+          "num": "30K+",
+          "label_en": "Platform Visitors",
+          "label_ar": "زوار المنصة",
+          "color": "#22C55E"
+        },
+        {
+          "num": "4",
+          "label_en": "Team Members",
+          "label_ar": "أعضاء الفريق",
+          "color": "#29A0E0"
+        },
+        {
+          "num": "Free",
+          "label_en": "Always",
+          "label_ar": "دائماً",
+          "color": "#C8911A"
+        }
+      ],
+      "pillars": [],
+      "blocks": []
+    }
   ],
-  awards:[
-    {id:'a1',medal:'🥉',title_en:'3rd Place Worldwide',title_ar:'المركز الثالث عالمياً',org_en:'Mars Mission Design Engineering 2025 — The Mars Society',org_ar:'تصميم المهمة إلى المريخ 2025 — The Mars Society',year:'2025'},
-    {id:'a2',medal:'🏅',title_en:'Honorable Mention',title_ar:'ذكر شرفي',org_en:'Moon Base 2050 International Innovation — Harbin Institute of Technology, China',org_ar:'مسابقة Moon Base 2050 — معهد هاربين للتكنولوجيا، الصين',year:'2024'},
-    {id:'a3',medal:'🌍',title_en:'5th Place Worldwide',title_ar:'المركز الخامس عالمياً',org_en:'Mars Mission Design Engineering 2023 — The Mars Society',org_ar:'تصميم المهمة إلى المريخ 2023 — The Mars Society',year:'2023'},
-    {id:'a4',medal:'🎖️',title_en:'Recognition — Damascus University President',title_ar:'تكريم رئيس جامعة دمشق',org_en:'Notable achievements in international scientific competitions and conference participation',org_ar:'لإنجازات بارزة في مسابقات علمية دولية والمشاركة في المؤتمرات',year:'2023'},
-    {id:'a5',medal:'🕊️',title_en:'Youth Public Speaking Representative',title_ar:'ممثل خطابي للشباب',org_en:'International Day of Non-Violence — Embassy of India in Damascus / Peace Organization',org_ar:'اليوم الدولي للاعنف — سفارة الهند بدمشق / منظمة السلام',year:'2023'},
-    {id:'a6',medal:'🏛️',title_en:"Dean's Appreciation — Faculty of Science",title_ar:'تكريم العميد — كلية العلوم',org_en:'Damascus University, for promotion of scientific exploration among Syrian youth',org_ar:'جامعة دمشق، لتعزيز الاستكشاف العلمي بين الشباب السوري',year:'2024'},
+  "awards": [
+    {
+      "id": "a1",
+      "medal": "🥉",
+      "title_en": "3rd Place Worldwide",
+      "title_ar": "المركز الثالث عالمياً",
+      "org_en": "Mars Mission Design Engineering 2025 — The Mars Society",
+      "org_ar": "تصميم المهمة إلى المريخ 2025 — The Mars Society",
+      "year": "2025"
+    },
+    {
+      "id": "a2",
+      "medal": "🏅",
+      "title_en": "Honorable Mention",
+      "title_ar": "ذكر شرفي",
+      "org_en": "Moon Base 2050 International Innovation — Harbin Institute of Technology, China",
+      "org_ar": "مسابقة Moon Base 2050 — معهد هاربين للتكنولوجيا، الصين",
+      "year": "2024"
+    },
+    {
+      "id": "a3",
+      "medal": "🌍",
+      "title_en": "5th Place Worldwide",
+      "title_ar": "المركز الخامس عالمياً",
+      "org_en": "Mars Mission Design Engineering 2023 — The Mars Society",
+      "org_ar": "تصميم المهمة إلى المريخ 2023 — The Mars Society",
+      "year": "2023"
+    },
+    {
+      "id": "a4",
+      "medal": "🎖️",
+      "title_en": "Recognition — Damascus University President",
+      "title_ar": "تكريم رئيس جامعة دمشق",
+      "org_en": "Notable achievements in international scientific competitions and conference participation",
+      "org_ar": "لإنجازات بارزة في مسابقات علمية دولية والمشاركة في المؤتمرات",
+      "year": "2023"
+    },
+    {
+      "id": "a5",
+      "medal": "🕊️",
+      "title_en": "Youth Public Speaking Representative",
+      "title_ar": "ممثل خطابي للشباب",
+      "org_en": "International Day of Non-Violence — Embassy of India in Damascus / Peace Organization",
+      "org_ar": "اليوم الدولي للاعنف — سفارة الهند بدمشق / منظمة السلام",
+      "year": "2023"
+    },
+    {
+      "id": "a6",
+      "medal": "🏛️",
+      "title_en": "Dean's Appreciation — Faculty of Science",
+      "title_ar": "تكريم العميد — كلية العلوم",
+      "org_en": "Damascus University, for promotion of scientific exploration among Syrian youth",
+      "org_ar": "جامعة دمشق، لتعزيز الاستكشاف العلمي بين الشباب السوري",
+      "year": "2024"
+    }
   ],
-  volunteering:[
-    {id:'v1',title_en:'Coach & Volunteer — Syrian Space Science Team',title_ar:'مدرب ومتطوع — الفريق السوري لعلوم الفضاء',org_en:'Syrian Space Science & Modern Sciences',org_ar:'الفريق السوري لعلوم الفضاء والعلوم الحديثة',date_en:'May 2023 – Present',date_ar:'مايو 2023 – حتى الآن',bullets_en:['Train and mentor talented Syrian students for international space competitions.','Represented Syria in Mars Society and Moon Station 2050 competitions worldwide.'],bullets_ar:['تدريب وتأهيل طلاب سوريين موهوبين للمشاركة في مسابقات الفضاء الدولية.','مثّل سوريا في مسابقات Mars Society وMoon Station 2050 على مستوى العالم.']},
-    {id:'v2',title_en:'Volunteer — Peace Organization',title_ar:'متطوع — منظمة السلام',org_en:'Damascus',org_ar:'دمشق',date_en:'Apr 2023 – Present',date_ar:'أبريل 2023 – حتى الآن',bullets_en:['Peacebuilding, youth development, English language support and intercultural dialogues in post-conflict contexts.'],bullets_ar:['بناء السلام وتنمية الشباب، جلسات دعم اللغة الإنجليزية والحوارات بين الثقافات في سياقات ما بعد النزاع.']},
-    {id:'v3',title_en:'Volunteer — TEDx AlQassaa',title_ar:'متطوع — TEDx القصاع',org_en:'Damascus',org_ar:'دمشق',date_en:'May 2025 – Present',date_ar:'مايو 2025 – حتى الآن',bullets_en:[],bullets_ar:[]},
-    {id:'v4',title_en:'Volunteer — Syrian Research & Publication Society',title_ar:'متطوع — الجمعية السورية للبحث والنشر',org_en:'Damascus',org_ar:'دمشق',date_en:'Jul 2025 – Present',date_ar:'يوليو 2025 – حتى الآن',bullets_en:[],bullets_ar:[]},
+  "volunteering": [
+    {
+      "id": "v1",
+      "title_en": "Coach & Volunteer — Syrian Space Science Team",
+      "title_ar": "مدرب ومتطوع — الفريق السوري لعلوم الفضاء",
+      "org_en": "Syrian Space Science & Modern Sciences",
+      "org_ar": "الفريق السوري لعلوم الفضاء والعلوم الحديثة",
+      "date_en": "May 2023 – Present",
+      "date_ar": "مايو 2023 – حتى الآن",
+      "bullets_en": [
+        "Train and mentor talented Syrian students for international space competitions.",
+        "Represented Syria in Mars Society and Moon Station 2050 competitions worldwide."
+      ],
+      "bullets_ar": [
+        "تدريب وتأهيل طلاب سوريين موهوبين للمشاركة في مسابقات الفضاء الدولية.",
+        "مثّل سوريا في مسابقات Mars Society وMoon Station 2050 على مستوى العالم."
+      ]
+    },
+    {
+      "id": "v2",
+      "title_en": "Volunteer — Peace Organization",
+      "title_ar": "متطوع — منظمة السلام",
+      "org_en": "Damascus",
+      "org_ar": "دمشق",
+      "date_en": "Apr 2023 – Present",
+      "date_ar": "أبريل 2023 – حتى الآن",
+      "bullets_en": [
+        "Peacebuilding, youth development, English language support and intercultural dialogues in post-conflict contexts."
+      ],
+      "bullets_ar": [
+        "بناء السلام وتنمية الشباب، جلسات دعم اللغة الإنجليزية والحوارات بين الثقافات في سياقات ما بعد النزاع."
+      ]
+    },
+    {
+      "id": "v3",
+      "title_en": "Volunteer — TEDx AlQassaa",
+      "title_ar": "متطوع — TEDx القصاع",
+      "org_en": "Damascus",
+      "org_ar": "دمشق",
+      "date_en": "2025 – 2026",
+      "date_ar": "2025 – 2026",
+      "bullets_en": [],
+      "bullets_ar": []
+    },
+    {
+      "id": "v4",
+      "title_en": "Volunteer — Syrian Research & Publication Society",
+      "title_ar": "متطوع — الجمعية السورية للبحث والنشر",
+      "org_en": "Damascus",
+      "org_ar": "دمشق",
+      "date_en": "Jul 2025 – Present",
+      "date_ar": "يوليو 2025 – حتى الآن",
+      "bullets_en": [],
+      "bullets_ar": []
+    }
   ],
-  certs:[
-    {id:'c1',name_en:'Machine Learning Specialization',name_ar:'تخصص التعلم الآلي',org:'Coursera',year:'2024',desc_en:'Supervised, unsupervised & reinforcement learning; Python & NumPy',desc_ar:'التعلم المُشرَف وغير المُشرَف والتعزيزي؛ Python وNumPy'},
-    {id:'c2',name_en:'Deep Learning Specialization',name_ar:'تخصص التعلم العميق',org:'Coursera',year:'2025',desc_en:'CNNs, RNNs, LSTMs, Transformers, Computer Vision & NLP',desc_ar:'الشبكات العصبية التلافيفية والمتكررة، المحولات، رؤية الحاسب، NLP'},
-    {id:'c3',name_en:'TensorFlow Developer Specialization',name_ar:'تخصص TensorFlow للمطورين',org:'Coursera',year:'2025',desc_en:'Neural networks with TensorFlow & Keras for CV, NLP & time series',desc_ar:'شبكات عصبية بـ TensorFlow وKeras لرؤية الحاسب وNLP'},
-    {id:'c4',name_en:'Mobile App Development',name_ar:'تطوير تطبيقات الجوال',org:'Syrian Computer Society Training Center',year:'2025',desc_en:'Flutter & Dart with Firebase; responsive UI & API integration',desc_ar:'Flutter وDart مع Firebase؛ واجهات مستجيبة وتكامل API'},
+  "certs": [
+    {
+      "id": "c1",
+      "name_en": "Machine Learning Specialization",
+      "name_ar": "تخصص التعلم الآلي",
+      "org": "Coursera",
+      "year": "2024",
+      "desc_en": "Supervised, unsupervised & reinforcement learning; Python & NumPy",
+      "desc_ar": "التعلم المُشرَف وغير المُشرَف والتعزيزي؛ Python وNumPy"
+    },
+    {
+      "id": "c2",
+      "name_en": "Deep Learning Specialization",
+      "name_ar": "تخصص التعلم العميق",
+      "org": "Coursera",
+      "year": "2025",
+      "desc_en": "CNNs, RNNs, LSTMs, Transformers, Computer Vision & NLP",
+      "desc_ar": "الشبكات العصبية التلافيفية والمتكررة، المحولات، رؤية الحاسب، NLP"
+    },
+    {
+      "id": "c3",
+      "name_en": "TensorFlow Developer Specialization",
+      "name_ar": "تخصص TensorFlow للمطورين",
+      "org": "Coursera",
+      "year": "2025",
+      "desc_en": "Neural networks with TensorFlow & Keras for CV, NLP & time series",
+      "desc_ar": "شبكات عصبية بـ TensorFlow وKeras لرؤية الحاسب وNLP"
+    },
+    {
+      "id": "c4",
+      "name_en": "Mobile App Development",
+      "name_ar": "تطوير تطبيقات الجوال",
+      "org": "Syrian Computer Society Training Center",
+      "year": "2025",
+      "desc_en": "Flutter & Dart with Firebase; responsive UI & API integration",
+      "desc_ar": "Flutter وDart مع Firebase؛ واجهات مستجيبة وتكامل API"
+    }
   ],
-  skills:[
-    {id:'sk1',title_en:'Programming Languages',title_ar:'لغات البرمجة',tags:['Python','C++','C#','JavaScript','HTML & CSS']},
-    {id:'sk2',title_en:'AI & Machine Learning',title_ar:'الذكاء الاصطناعي والتعلم الآلي',tags:['TensorFlow','PyTorch','Scikit-learn','OpenCV','NumPy','Pandas']},
-    {id:'sk3',title_en:'Mobile Development',title_ar:'تطوير تطبيقات الجوال',tags:['Flutter','Dart','Firebase','Bloc','Git/GitHub']},
-    {id:'sk4',title_en:'Data & Soft Skills',title_ar:'البيانات والمهارات الشخصية',tags:['MySQL','Excel','Problem Solving','Team Leadership','Academic Writing','Project Management']},
+  "skills": [
+    {
+      "id": "sk1",
+      "title_en": "Programming Languages",
+      "title_ar": "لغات البرمجة",
+      "tags": [
+        "Python",
+        "C++",
+        "C#",
+        "JavaScript",
+        "HTML & CSS"
+      ]
+    },
+    {
+      "id": "sk2",
+      "title_en": "AI & Machine Learning",
+      "title_ar": "الذكاء الاصطناعي والتعلم الآلي",
+      "tags": [
+        "TensorFlow",
+        "PyTorch",
+        "Scikit-learn",
+        "OpenCV",
+        "NumPy",
+        "Pandas"
+      ]
+    },
+    {
+      "id": "sk3",
+      "title_en": "Mobile Development",
+      "title_ar": "تطوير تطبيقات الجوال",
+      "tags": [
+        "Flutter",
+        "Dart",
+        "Firebase",
+        "Bloc",
+        "Git/GitHub"
+      ]
+    },
+    {
+      "id": "sk4",
+      "title_en": "Data & Soft Skills",
+      "title_ar": "البيانات والمهارات الشخصية",
+      "tags": [
+        "MySQL",
+        "Excel",
+        "Problem Solving",
+        "Team Leadership",
+        "Academic Writing",
+        "Project Management"
+      ]
+    }
   ],
+  "patents": [
+    {
+      "id": "pt1",
+      "title_ar": "نظام تنسيق تكيفي موزع للتدهور السريري وإدارة التنبيهات",
+      "title_en": "Distributed Adaptive Coordination System for Clinical Deterioration and Alert Management",
+      "inventors_ar": "أنس شاهين، بهاء مصري",
+      "inventors_en": "Anas Shahin, Bahaa Masri",
+      "year": "2025",
+      "status": "registered",
+      "number": ""
+    },
+    {
+      "id": "pt2",
+      "title_ar": "نظام تنسيق تنظيف على مستوى اللوح الواحد مدرك للاتساخ مع تعلم اتحادي عبر المواقع وتفعيل هجين متوافق مع أساطيل التنظيف القائمة وبوحدة تنظيف مرجعية مدمجة، للوحات الكهروضوئية الشمسية",
+      "title_en": "Panel-Level Dirt-Aware Cleaning Coordination System with Federated Learning and Hybrid Activation for Photovoltaic Solar Panels",
+      "inventors_ar": "أنس شاهين",
+      "inventors_en": "Anas Shahin",
+      "year": "2025",
+      "status": "registered",
+      "number": ""
+    }
+  ]
 };
 
 // ═══════════════════════════════════════════════════════
@@ -970,6 +1667,7 @@ function initDashboard(){
   renderProfileForm();
   renderTaglineList();
   renderPapersList();
+  renderPatentsList();
   renderProjectsList();
   renderAwardsList();
   renderVolunteeringList();
@@ -985,6 +1683,7 @@ function showPage(name){
 }
 function updateBadges(){
   document.getElementById('badge-papers').textContent = D.papers.length;
+  document.getElementById('badge-patents').textContent = (D.patents||[]).length;
 }
 function showSaved(id){
   const el=document.getElementById(id);
@@ -1174,6 +1873,71 @@ function savePaper(idx){
   saveData();renderPapersList();closeModal();
 }
 function delPaper(i){if(confirm('Delete this paper?')){D.papers.splice(i,1);saveData();renderPapersList();}}
+
+// ─── Patents ───────────────────────────────────────────
+function renderPatentsList(){
+  const el=document.getElementById('patents-list');
+  if(!el)return;
+  el.innerHTML='';
+  (D.patents||[]).forEach((p,i)=>{
+    el.innerHTML+=`<div class="item-card">
+      <div style="font-size:1.4rem;flex-shrink:0">⚗️</div>
+      <div class="item-card-content">
+        <div class="item-card-title" dir="rtl">${p.title_ar||p.title_en}</div>
+        <div class="item-card-sub">${p.inventors_en||p.inventors_ar||''} · ${p.year}${p.number?' · '+p.number:''} · ${p.status==='registered'?'✓ Registered':'⏳ Pending'}</div>
+      </div>
+      <div class="item-card-actions">
+        <button class="icon-btn edit" onclick="openPatentModal(${i})">✏️</button>
+        <button class="icon-btn del" onclick="delPatent(${i})">🗑</button>
+      </div>
+    </div>`;
+  });
+}
+function openPatentModal(idx){
+  if(!D.patents)D.patents=[];
+  const p=idx!==undefined?D.patents[idx]:null;
+  document.getElementById('modal-title').textContent=p?'Edit Patent':'Add Patent';
+  document.getElementById('modal-body').innerHTML=`
+    <div class="modal-fields">
+      <div class="field-group"><label>العنوان (عربي)</label><textarea class="dash-input textarea" id="ptm-tar" dir="rtl" style="min-height:90px">${p?p.title_ar:''}</textarea></div>
+      <div class="field-group"><label>Title (English)</label><textarea class="dash-input textarea" id="ptm-ten" style="min-height:70px">${p?p.title_en:''}</textarea></div>
+      <div class="field-row">
+        <div class="field-group"><label>المخترعون (عربي)</label><input class="dash-input" id="ptm-iar" dir="rtl" value="${p?p.inventors_ar:''}" placeholder="أنس شاهين، ..."></div>
+        <div class="field-group"><label>Inventors (EN)</label><input class="dash-input" id="ptm-ien" value="${p?p.inventors_en:''}" placeholder="Anas Shahin, ..."></div>
+      </div>
+      <div class="field-row">
+        <div class="field-group"><label>Year</label><input class="dash-input" id="ptm-yr" value="${p?p.year:'2025'}"></div>
+        <div class="field-group"><label>Patent Number</label><input class="dash-input" id="ptm-num" value="${p?p.number:''}" placeholder="Optional"></div>
+      </div>
+      <div class="field-group"><label>Status</label>
+        <select class="dash-input" id="ptm-status">
+          <option value="registered" ${!p||p.status==='registered'?'selected':''}>Registered</option>
+          <option value="pending" ${p&&p.status==='pending'?'selected':''}>Pending</option>
+        </select></div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+      <button class="btn-save" onclick="savePatent(${idx})">Save Patent</button>
+    </div>`;
+  openModal();
+}
+function savePatent(idx){
+  if(!D.patents)D.patents=[];
+  const obj={
+    id:idx!==undefined?(D.patents[idx]||{}).id||uid():uid(),
+    title_ar:document.getElementById('ptm-tar').value.trim(),
+    title_en:document.getElementById('ptm-ten').value.trim(),
+    inventors_ar:document.getElementById('ptm-iar').value.trim(),
+    inventors_en:document.getElementById('ptm-ien').value.trim(),
+    year:document.getElementById('ptm-yr').value,
+    number:document.getElementById('ptm-num').value.trim(),
+    status:document.getElementById('ptm-status').value,
+  };
+  if(!obj.title_ar&&!obj.title_en)return;
+  if(idx!==undefined)D.patents[idx]=obj;else D.patents.push(obj);
+  saveData();renderPatentsList();updateBadges();closeModal();
+}
+function delPatent(i){if(confirm('Delete this patent?')){D.patents.splice(i,1);saveData();renderPatentsList();updateBadges();}}
 
 // ─── Projects ─────────────────────────────────────────
 function renderProjectsList(){
@@ -1495,6 +2259,7 @@ function renderCV(){
   document.getElementById('cv-stats').innerHTML=[
     {num:pubCount,label:{en:'Published Q1',ar:'بحث Q1 منشور'}},
     {num:D.papers.length,label:{en:'Total Papers',ar:'إجمالي الأبحاث'}},
+    {num:(D.patents||[]).length,label:{en:'Patents',ar:'براءات اختراع'}},
     {num:'3rd',label:{en:'Mars 2025 Global',ar:'مريخ 2025 عالمياً'}},
     {num:D.projects.length,label:{en:'Ventures Led',ar:'مشاريع تأسيسية'}},
     {num:'30K+',label:{en:'Edglish Visitors',ar:'زوار Edglish'}},
@@ -1504,6 +2269,7 @@ function renderCV(){
   let html='';
   html+=renderEducation();
   html+=renderResearch();
+  html+=renderPatents();
   html+=renderProjects();
   html+=renderAwards();
   html+=renderVolunteering();
@@ -1629,6 +2395,30 @@ function renderLanguages(){
   return cvSection('languages','🌐',{en:'Languages',ar:'اللغات'},html,true);
 }
 
+function renderPatents(){
+  if(!D.patents||!D.patents.length)return '';
+  const cnt=D.patents.length;
+  let html=`<div style="display:inline-flex;align-items:center;gap:10px;margin-bottom:20px;background:rgba(167,139,250,.08);border:1px solid rgba(167,139,250,.25);border-radius:50px;padding:6px 18px">
+    <span style="font-size:.8rem;font-weight:700;color:#C4B5FD">⚗️ ${cnt} ${hl('Registered Patent'+(cnt>1?'s':''),'براءة اختراع مسجلة'+(cnt>1?' ('+cnt+')':''))}</span>
+  </div>`;
+  D.patents.forEach((p,i)=>{
+    const title=hl(p.title_en||p.title_ar, p.title_ar||p.title_en);
+    const inventors=hl(p.inventors_en||p.inventors_ar, p.inventors_ar||p.inventors_en);
+    const isReg=p.status==='registered';
+    html+=`<div class="patent-card">
+      <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:2px">
+        <span class="patent-badge">⚗️ ${hl('Patent','براءة اختراع')} ${i+1}</span>
+        <span class="status-badge ${isReg?'s-published':'s-review'}" style="margin-left:0"><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:${isReg?'var(--green)':'var(--orange)'};${isReg?'':'animation:blink 1.8s infinite;'}margin-right:4px"></span>${isReg?hl('Registered','مسجلة'):hl('Pending','قيد التسجيل')}</span>
+        ${p.year?`<span style="font-size:.7rem;color:var(--muted);font-family:'JetBrains Mono',monospace">${p.year}</span>`:''}
+        ${p.number?`<span class="patent-num">${p.number}</span>`:''}
+      </div>
+      <div class="patent-title">${title}</div>
+      <div class="patent-inventors">👥 ${hl('Inventors','المخترعون')}: <strong style="color:var(--white)">${inventors}</strong></div>
+    </div>`;
+  });
+  return cvSection('patents','⚗️',{en:'Patents',ar:'براءات الاختراع'},html,true);
+}
+
 function cvSection(id,icon,title,content,raw){
   return `<section class="cv-section" id="${id}">
     <div class="sec-header">
@@ -1690,7 +2480,7 @@ function initFadeAnim(){
       if(e.isIntersecting){e.target.style.opacity=1;e.target.style.transform='translateY(0)';obs.unobserve(e.target);}
     });
   },{threshold:.06});
-  document.querySelectorAll('.cv-card,.pub-card,.paper-card,.award-card,.cert-card,.cv-section').forEach((el,i)=>{
+  document.querySelectorAll('.cv-card,.pub-card,.paper-card,.award-card,.cert-card,.patent-card,.cv-section').forEach((el,i)=>{
     el.style.opacity=0;el.style.transform='translateY(16px)';
     el.style.transition=`opacity .45s ease ${(i%10)*35}ms, transform .45s ease ${(i%10)*35}ms`;
     obs.observe(el);
