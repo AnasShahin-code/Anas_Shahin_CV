@@ -1589,7 +1589,11 @@ let isLoggedIn = false, isAr = false, taglineIdx = 0;
 function loadData(){
   try{
     const s = localStorage.getItem('anas_cv_data');
-    if(s) D = JSON.parse(s);
+    if(s){
+      D = JSON.parse(s);
+      // Migrate: add any new top-level sections not present in older stored data
+      if(!D.patents) D.patents = JSON.parse(JSON.stringify(DEFAULT_DATA.patents));
+    }
   }catch(e){}
 }
 function saveData(){
